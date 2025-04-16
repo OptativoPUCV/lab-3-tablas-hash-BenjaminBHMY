@@ -59,14 +59,15 @@ HashMap * createMap(long capacity) {
     nuevoMapa->capacity = capacity;
         
     nuevoMapa->buckets = (Pair**)malloc(sizeof(Pair*)*capacity);
-
-    for(int i=0; i<capacity; i++){
-        nuevoMapa->buckets[i] = NULL;
-    }
     if(nuevoMapa->buckets == NULL){
         free(nuevoMapa);
         return NULL;
     }
+    
+    for(int i=0; i<capacity; i++){
+        nuevoMapa->buckets[i] = NULL;
+    }
+
     return nuevoMapa;
 }
 

@@ -29,3 +29,14 @@ hashmap.c:57:24: error: assignment makes integer from pointer without a cast [-W
                         ^
 cc1.exe: all warnings being treated as errors
 8052a82
+Wed, Apr 16, 2025  8:55:58 AM: 
+ hashmap.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c: In function 'createMap':
+hashmap.c:57:24: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+     nuevoMapa->current = NULL;
+                        ^
+cc1.exe: all warnings being treated as errors
+e162143
