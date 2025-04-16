@@ -1,0 +1,11 @@
+Wed, Apr 16, 2025  8:48:57 AM: 
+ hashmap.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c: In function 'createMap':
+hashmap.c:58:28: error: assignment makes integer from pointer without a cast [-Werror=int-conversion]
+         nuevoMapa->current = NULL;
+                            ^
+cc1.exe: all warnings being treated as errors
+eeef3b7
