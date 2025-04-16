@@ -52,26 +52,22 @@ void enlarge(HashMap * map) {
 
 
 HashMap * createMap(long capacity) {
-    if(capacity > 0){
-        HashMap *nuevoMapa = (HashMap*)malloc(sizeof(HashMap));
-        if(nuevoMapa == NULL) return NULL; //no se pudo crear el mapa
-        nuevoMapa->current = NULL;
-        nuevoMapa->size = 0;
-        nuevoMapa->capacity = capacity;
+    HashMap *nuevoMapa = (HashMap*)malloc(sizeof(HashMap));
+    if(nuevoMapa == NULL) return NULL;
+    nuevoMapa->current = NULL;
+    nuevoMapa->size = 0;
+    nuevoMapa->capacity = capacity;
+        
+    nuevoMapa->buckets = (Pair**)malloc(sizeof(Pair*)*capacity);
 
-        nuevoMapa->buckets = (Pair**)malloc(sizeof(Pair*)*capacity);
-
-        for(int i=0; i<capacity; i++){
-            nuevoMapa->buckets[i] = NULL;
-        }
-        if(nuevoMapa->buckets == NULL){
-            free(nuevoMapa);
-            return NULL;
-        }
-        return nuevoMapa;
+    for(int i=0; i<capacity; i++){
+        nuevoMapa->buckets[i] = NULL;
     }
-
-    return NULL;
+    if(nuevoMapa->buckets == NULL){
+        free(nuevoMapa);
+        return NULL;
+    }
+    return nuevoMapa;
 }
 
 void eraseMap(HashMap * map,  char * key) {    
