@@ -115,8 +115,8 @@ Pair * searchMap(HashMap * map,  char * key) {
     while (map->buckets[index] != NULL) 
     {
         if (is_equal(map->buckets[index]->key, key) == 1) {
-            return map->buckets[index];
             map->current = index; //actualiza el indice del ultimo elemento accedido
+            return map->buckets[index];
         }
         index = (index + 1) % map->capacity; //probar con el siguiente bucket
     }
