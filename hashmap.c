@@ -110,13 +110,15 @@ void eraseMap(HashMap * map,  char * key) {
 Pair * searchMap(HashMap * map,  char * key) {   
     if(map == NULL) return NULL;
     if(key == NULL) return NULL;
+
     long index = hash(key, map->capacity);
     if(map->buckets[index] == NULL) return NULL;
-    if(is_equal(map->buckets[index]->key, key) == 1) return map->buckets[index];
-    for(int i=0; i<map->capacity; i++){
-        if(map->buckets[i] != NULL && is_equal(map->buckets[i]->key, key) == 1){
-            return map->buckets[i];
+    
+    while (map->buckets[index] != NULL) {
+        if (is_equal(map->buckets[index]->key, key) == 1) {
+            return map->buckets[index];
         }
+        index = (index + 1) % map->capacity; //probar con el siguiente bucket
     }
 
     return NULL;
