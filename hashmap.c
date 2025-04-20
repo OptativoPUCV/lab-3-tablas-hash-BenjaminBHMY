@@ -151,19 +151,21 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
+    if (map == NULL || map->size == 0 || map->current == -1) return NULL; // Validaciones iniciales
 
-    if (map == NULL) return NULL;
-    if (map->size == 0) return NULL;
-    if (map->current == -1) return NULL; //no se ha accedido a ningun elemento
-    for (long i = (map->current + 1) % map->capacity; i != map->current; i = (i + 1) % map->capacity) 
-    {
+    long start = map->current; // Guardar el índice inicial
+    long i = (map->current + 1) % map->capacity; // Comenzar en el siguiente índice
+
+    do {
         if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
-            map->current = i;
+            map->current = i; // Actualizar el índice actual
             return map->buckets[i];
         }
-    }
-    return NULL;
+        i = (i + 1) % map->capacity; // Avanzar al siguiente índice
+    } while (i != start); // Detener si se recorrió toda la tabla
 
+    return NULL
+    
     /*if (map == NULL) return NULL;
     if (map->size <= 1) return NULL;
     if (map->current == -1) return NULL; //no se ha accedido a ningun elemento
