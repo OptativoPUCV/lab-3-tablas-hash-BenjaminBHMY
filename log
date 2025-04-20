@@ -96,3 +96,23 @@ hashmap.c:105:6: note: declared here
       ^~~~~~~~
 cc1.exe: all warnings being treated as errors
 b1b4029
+Sun, Apr 20, 2025  2:51:57 PM: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c: In function 'eraseMap':
+hashmap.c:115:20: error: 'return' with a value, in function returning void [-Werror]
+             return NULL;
+                    ^~~~
+hashmap.c:105:6: note: declared here
+ void eraseMap(HashMap * map,  char * key) {
+      ^~~~~~~~
+hashmap.c:120:12: error: 'return' with a value, in function returning void [-Werror]
+     return NULL;
+            ^~~~
+hashmap.c:105:6: note: declared here
+ void eraseMap(HashMap * map,  char * key) {
+      ^~~~~~~~
+cc1.exe: all warnings being treated as errors
+c82c67d
