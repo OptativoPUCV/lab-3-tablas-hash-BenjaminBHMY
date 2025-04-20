@@ -156,13 +156,13 @@ Pair * nextMap(HashMap * map) {
     long start = map->current; // Guardar el índice inicial
     long i = (map->current + 1) % map->capacity; // Comenzar en el siguiente índice
 
-    do {
+    while (i != start) { // Recorrer la tabla hasta volver al índice inicial
         if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
             map->current = i; // Actualizar el índice actual
             return map->buckets[i];
         }
         i = (i + 1) % map->capacity; // Avanzar al siguiente índice
-    } while (i != start); // Detener si se recorrió toda la tabla
+    }
 
     map->current = -1; // No se encontraron más elementos válidos
     return NULL; // Retornar NULL si no hay más elementos
