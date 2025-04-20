@@ -154,7 +154,6 @@ Pair * nextMap(HashMap * map) {
 
     if (map == NULL) return NULL;
     if (map->size == 0) return NULL;
-    if (map->current == -1) return NULL; //no se ha accedido a ningun elemento
     for (long i = (map->current + 1) % map->capacity; i != map->current; i = (i + 1) % map->capacity)
     {
         if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
