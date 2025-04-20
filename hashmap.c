@@ -155,6 +155,18 @@ Pair * nextMap(HashMap * map) {
     if (map == NULL) return NULL;
     if (map->size == 0) return NULL;
     if (map->current == -1) return NULL; //no se ha accedido a ningun elemento
+    for (long i = map->current + 1; i != map->current; i++)
+    {
+        if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
+            map->current = i;
+            return map->buckets[i];
+        }
+    }
+    return NULL;
+
+    /*if (map == NULL) return NULL;
+    if (map->size <= 1) return NULL;
+    if (map->current == -1) return NULL; //no se ha accedido a ningun elemento
     
     long i = map->current;
     do
@@ -166,5 +178,5 @@ Pair * nextMap(HashMap * map) {
         } 
     } while (i != map->current);
 
-    return NULL;
+    return NULL;*/
 }
