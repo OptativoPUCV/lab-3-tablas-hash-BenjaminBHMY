@@ -154,12 +154,17 @@ Pair * nextMap(HashMap * map) {
 
     if (map == NULL) return NULL;
     if (map->size == 0) return NULL;
-    for (long i = map->current + 1; i < map->capacity; i++)
+    if (map->current == -1) return NULL; //no se ha accedido a ningun elemento
+    
+    long i = map->current;
+    do
     {
+        i = (i + 1) % map->capacity;
         if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
             map->current = i;
             return map->buckets[i];
-        }
-    }
+        } 
+    } while (i != map->current);
+
     return NULL;
 }
