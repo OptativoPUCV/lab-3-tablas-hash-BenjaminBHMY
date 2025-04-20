@@ -164,5 +164,6 @@ Pair * nextMap(HashMap * map) {
         i = (i + 1) % map->capacity; // Avanzar al siguiente índice
     } while (i != start); // Detener si se recorrió toda la tabla
 
+    map->current = -1; // Reiniciar el índice actual si no se encontró un siguiente elemento
     return NULL; // No se encontró el siguiente elemento
 }
