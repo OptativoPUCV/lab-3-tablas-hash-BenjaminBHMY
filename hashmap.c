@@ -164,21 +164,5 @@ Pair * nextMap(HashMap * map) {
         i = (i + 1) % map->capacity; // Avanzar al siguiente índice
     } while (i != start); // Detener si se recorrió toda la tabla
 
-    return NULL
-    
-    /*if (map == NULL) return NULL;
-    if (map->size <= 1) return NULL;
-    if (map->current == -1) return NULL; //no se ha accedido a ningun elemento
-    
-    long i = map->current;
-    do
-    {
-        i = (i + 1) % map->capacity;
-        if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
-            map->current = i;
-            return map->buckets[i];
-        } 
-    } while (i != map->current);
-
-    return NULL;*/
+    return NULL; // No se encontró el siguiente elemento
 }
