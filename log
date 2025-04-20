@@ -133,3 +133,9 @@ hashmap.c:150:1: error: control reaches end of non-void function [-Werror=return
  ^
 cc1.exe: all warnings being treated as errors
 c3a53a9
+Sun, Apr 20, 2025  4:48:45 PM: 
+ hashmap.c | 1 +
+ 1 file changed, 1 insertion(+)
+ tests:  12|2
+total_score: 50/70
+2f72269
