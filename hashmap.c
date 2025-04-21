@@ -77,8 +77,22 @@ void insertMap(HashMap * map, char * key, void * value) {
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
+    if(map == NULL) return;
 
+    Pair ** old_buckets = map->buckets;
+    map->capacity = map->capacity * 2;
+    map->buckets = (Pair**)malloc(sizeof(Pair*)*map->capacity);
+    if(map->buckets == NULL){
+        free(old_buckets);
+        return;
+    }
+    
+    for(int i=0; i<map->capacity; i++)
+    {
+        insertMap(map, old_buckets[i]->key, old_buckets[i]->value);
+    }
 
+    map->size = 0;    
 }
 
 
@@ -161,4 +175,20 @@ Pair * nextMap(HashMap * map) {
         }
     }
     return NULL;
+
+    /*if (map == NULL || map->size == 0 || map->current == -1) return NULL; // Validaciones iniciales
+
+    long start = map->current; // Guardar el índice inicial
+    long i = (map->current + 1) % map->capacity; // Comenzar en el siguiente índice
+
+    while (i != start) { // Recorrer la tabla hasta volver al índice inicial
+        if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
+            map->current = i; // Actualizar el índice actual
+            return map->buckets[i];
+        }
+        i = (i + 1) % map->capacity; // Avanzar al siguiente índice
+    }
+
+    map->current = -1; // No se encontraron más elementos válidos
+    return NULL; // Retornar NULL si no hay más elementos*/
 }
