@@ -80,19 +80,22 @@ void enlarge(HashMap * map) {
     if(map == NULL) return;
 
     Pair ** old_buckets = map->buckets;
-    map->capacity = map->capacity * 2;
-    map->buckets = (Pair**)malloc(sizeof(Pair*)*map->capacity);
-    if(map->buckets == NULL){
-        free(old_buckets);
-        return;
-    }
+    map->capacity *= 2;
+    map->size = 0;
+    Pair **new_buckets = (Pair**)malloc(sizeof(Pair*)*map->capacity);
+    if(new_buckets == NULL) return;
     
-    for(int i=0; i<map->capacity; i++)
-    {
-        insertMap(map, old_buckets[i]->key, old_buckets[i]->value);
+    for(int i=0; i < map->capacity / 2; i++)
+        map->buckets[i] = NULL;
+    
+    for(int i=0; i < map->capacity / 2; i++) {
+        if (old_buckets[i] != NULL) {
+            insertMap(map, old_buckets[i]->key, old_buckets[i]->value); //reinsertar el par en la nueva tabla
+            free(old_buckets[i]); //liberar el par viejo
+        }
     }
 
-    map->size = 0;    
+    free(old_buckets); //liberar la tabla vieja
 }
 
 
